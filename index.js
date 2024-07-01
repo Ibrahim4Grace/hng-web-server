@@ -36,6 +36,11 @@ app.use((req, res, next) => {
 
   next();
 });
+
+app.get('/', (req, res) => {
+  res.send('hng-web-server API is running');
+});
+
 app.use('/api', weatherRoute);
 
 app.use(notFound);
