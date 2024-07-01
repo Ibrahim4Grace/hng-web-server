@@ -24,18 +24,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser());
-app.use((req, res, next) => {
-  const clientIp = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-
-  // If x-forwarded-for is a comma-separated list, take the first IP
-  if (clientIp.includes(',')) {
-    req.clientIp = clientIp.split(',')[0].trim();
-  } else {
-    req.clientIp = clientIp;
-  }
-
-  next();
-});
 
 app.get('/', (req, res) => {
   res.send('hng-web-server API is running');
