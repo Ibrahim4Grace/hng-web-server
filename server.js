@@ -5,7 +5,7 @@ import { notFound, errorHandler } from './middlewares/errorMiddleware.js';
 import cors from 'cors';
 import colors from 'colors';
 
-import authUserRoutes from './routes/userRoutes.js';
+import weatherRoute from './routes/weatherRoute.js';
 
 dotenv.config();
 
@@ -24,12 +24,19 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser());
+app.use((req, res, next) => {
+  const clientIp = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
 
-app.get('/', (req, res) => {
-  res.send('Kadosh API is running');
+  // If x-forwarded-for is a comma-separated list, take the first IP
+  if (clientIp.includes(',')) {
+    req.clientIp = clientIp.split(',')[0].trim();
+  } else {
+    req.clientIp = clientIp;
+  }
+
+  next();
 });
-
-app.use('/api/auth', authUserRoutes);
+app.use('/api', weatherRoute);
 
 app.use(notFound);
 app.use(errorHandler);
