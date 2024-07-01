@@ -17,9 +17,6 @@ export const checkWeather = asyncHandler(async (req, res) => {
       `http://api.weatherapi.com/v1/current.json?key=${customEnv.weatherApiKey}&q=auto:ip`
     );
 
-    // Log the weatherResponse data for debugging
-    console.log('Weather Response Data:', weatherResponse.data);
-
     const location = weatherResponse.data.location.name;
     const temperature = weatherResponse.data.current.temp_c;
 
