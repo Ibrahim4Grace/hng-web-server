@@ -3,9 +3,13 @@ import axios from 'axios';
 import logger from '../logger/logger.js';
 import customEnv from '../customEnv.js';
 
+export const welcome = asyncHandler(async (req, res) => {
+  res.send("nav to '/api/hello?visitor_name' ");
+});
+
 export const checkWeather = asyncHandler(async (req, res) => {
   try {
-    const visitorName = req.query.visitor_name || 'Guest';
+    const visitorName = req.query.visitor_name || 'Mark';
     const clientIp = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
 
     // Fetch weather data from WeatherAPI using auto:ip

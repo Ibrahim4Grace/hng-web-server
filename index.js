@@ -15,10 +15,6 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser());
 
-app.get('/', (req, res) => {
-  res.send("nav to '/api/hello?visitor_name' ");
-});
-
 app.use('/', weatherRoute);
 
 app.use(notFound);
