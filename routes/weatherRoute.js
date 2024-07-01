@@ -4,6 +4,6 @@ import { checkWeather } from '../controllers/weatherController.js';
 
 const router = express.Router();
 
-router.route('/hello').get(checkWeather);
+router.route('/api/hello').get(checkWeather);
 
 export default router;

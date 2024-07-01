@@ -25,11 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser());
 
-app.get('/', (req, res) => {
-  res.send('hng-web-server API is running');
-});
-
-app.use('/api', weatherRoute);
+app.use('/', weatherRoute);
 
 app.use(notFound);
 app.use(errorHandler);
