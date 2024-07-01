@@ -2,7 +2,6 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import { notFound, errorHandler } from './middlewares/errorMiddleware.js';
-import cors from 'cors';
 import colors from 'colors';
 
 import weatherRoute from './routes/weatherRoute.js';
@@ -10,15 +9,6 @@ import weatherRoute from './routes/weatherRoute.js';
 dotenv.config();
 
 const app = express();
-
-let corsOptions = {
-  origin: ['*'],
-  methods: 'GET, HEAD, PUT, PATCH, POST, DELETE',
-  httpOnly: true,
-  credentials: true,
-  optionsSuccessStatus: 200,
-};
-app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

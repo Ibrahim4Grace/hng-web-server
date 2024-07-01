@@ -15,7 +15,6 @@
     "axios": "^1.7.2",
     "colors": "^1.4.0",
     "cookie-parser": "^1.4.6",
-    "cors": "^2.8.5",
     "express": "^4.19.2",
     "logger": "^0.0.1",
     "winston": "^3.13.0"
